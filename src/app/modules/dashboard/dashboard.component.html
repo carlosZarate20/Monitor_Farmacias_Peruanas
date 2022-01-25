@@ -1,0 +1,155 @@
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-inner">
+                            <div class="nk-block-head nk-block-head-sm">
+                                <div class="nk-block-between">
+                                    <div class="nk-block-head-content">
+                                        <h3 class="nk-block-title page-title">Transaciones del mes</h3>
+                                    </div>
+                                    <div class="nk-block-head-content">
+                                        <h3 class="nk-block-title page-title">Transaciones</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-gs">
+                                <div class="col-xxl-6">
+                                    <div class="row g-gs">
+                                        <div class="col-lg-6 col-xxl-12">
+                                            <div class="row g-gs">
+                                                <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                    <div class="card card-bordered">
+                                                        <div class="card-inner">
+                                                            <div class="card-title-group align-start mb-2">
+                                                                <div class="card-title">
+                                                                    <h6 class="title">Datos Maestros</h6>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                <div class="nk-sale-data">
+                                                                    <!-- <span class="amount">9.69K</span>
+                                                                    <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span> -->
+                                                                </div>
+                                                                <div class="nk-sales-ck">
+                                                                    <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .card -->
+                                                </div><!-- .col -->
+                                                <div class="col-sm-6 col-lg-12 col-xxl-6">
+                                                    <div class="card card-bordered">
+                                                        <div class="card-inner">
+                                                            <div class="card-title-group align-start mb-2">
+                                                                <div class="card-title">
+                                                                    <h6 class="title">Transaciones Almacén Li</h6>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
+                                                                <div class="nk-sale-data">
+                                                                    <!-- <span class="amount">346.2</span>
+                                                                    <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span> -->
+                                                                </div>
+                                                                <div class="nk-sales-ck">
+                                                                    <!-- <canvas class="sales-bar-chart" id="totalSubscription"></canvas> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .card -->
+                                                </div><!-- .col -->
+                                            </div><!-- .row -->
+                                        </div><!-- .col -->
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xxl-6">
+                                    <div class="card card-bordered h-100">
+                                        <div class="card-inner h-100 stretch flex-column">
+                                            <div class="card-title-group">
+                                                <!-- <div class="card-title card-title-sm">
+                                                    <h6 class="title">Sessions by Device</h6>
+                                                </div> -->
+                                                <!-- <div class="card-tools">
+                                                    <div class="drodown">
+                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white" data-toggle="dropdown">30 Days</a>
+                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs">
+                                                            <ul class="link-list-opt no-bdr">
+                                                                <li><a href="#"><span>7 Days</span></a></li>
+                                                                <li><a href="#"><span>15 Days</span></a></li>
+                                                                <li><a href="#"><span>30 Days</span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <div class="device-status my-auto">
+                                                <div class="device-status-ck">
+                                                    <canvas class="analytics-doughnut" id="deviceStatusData"></canvas>
+                                                </div>
+                                                
+                                            </div><!-- .device-status -->
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="nk-block-head nk-block-head-sm">
+                                <div class="nk-block-between">
+                                    <div class="nk-block-head-content">
+                                        <h3 class="nk-block-title page-title">Transaciones recientes</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr class="tb-tnx-head">
+                                        <th class="tb-tnx-id"><span class="">Transaccion</span></th>
+                                        <th class="tb-tnx-info">
+                                            <span class="tb-tnx-desc d-none d-sm-inline-block">
+                                                <span>Cantidad Transacciones</span>
+                                            </span>
+                                        </th>
+                                        <th class="tb-tnx-amount is-alt">
+                                            <span class="tb-tnx-total">Ultima Ejecución</span>
+                                        </th>
+                                        <th class="tb-tnx-amount is-alt">
+                                            <span class="tb-tnx-total">Acciones</span>
+                                        </th>
+                                    </tr><!-- tb-tnx-item -->
+                                </thead>
+                                <tbody>
+                                    <tr class="tb-tnx-item">
+                                        <td class="tb-tnx-id">
+                                            <span>Maestro Proveedor</span>
+                                        </td>
+                                        <td class="tb-tnx-info">
+                                            <div class="tb-tnx-desc">
+                                                <span class="title">0</span>
+                                            </div>
+                                        </td>
+                                        <td class="tb-tnx-amount is-alt">
+                                            <div class="tb-tnx-total">
+                                                <span class="amount">24/01/2022 09:32:58 a.m.</span>
+                                            </div>
+                                        </td>
+                                        <td class="tb-tnx-amount">
+                                            <div class="tb-tnx-total">
+                                                
+                                                <em class="fas fa-sync-alt"></em>
+                                            </div>
+                                        </td>
+                                    </tr><!-- tb-tnx-item -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
