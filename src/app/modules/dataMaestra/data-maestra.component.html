@@ -36,7 +36,7 @@
                                     </tr><!-- tb-tnx-item -->
                                 </thead>
                                 <tbody>
-                                    <tr class="tb-tnx-item" *ngFor="let items of model.listDataMaestra">
+                                    <tr class="tb-tnx-item" *ngFor="let items of model.listDataMaestra; let i = index">
                                         <td class="tb-tnx-id">
                                             <span>{{items.nameTransaccion}}</span>
                                         </td>
@@ -56,9 +56,9 @@
                                             </div>
                                         </td>
                                         <td class="tb-tnx-amount">
-                                            <div class="tb-tnx-total">
-                                                
+                                            <div class="tb-tnx-total">                                                
                                                 <em class="fas fa-sync-alt" (click)="sendProvider(items.codeTransaction)"></em>
+                                                <em class="fas fa-pencil-alt" (click)="openModal(template, i+1, items.nameTransaccion)"></em>                                                                                                                               
                                             </div>
                                         </td>
                                     </tr><!-- tb-tnx-item -->
@@ -71,3 +71,36 @@
         </div>
     </div>
 </div>
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Programación para el proceso : {{masterTransactionName}} </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">        
+        <form class="form-validate">
+            <div class="row g-gs">       
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="fv-topics">Intervalo de tiempo</label>
+                        <div class="form-control-wrap ">
+                            <select class="form-control form-select" [(ngModel)]="timeProcces" id="fv-topics" name="fv-topics" data-placeholder="Seleccione una opción" required>
+                                <!-- <option label="Escoge una opción" value=""></option> -->
+                                <option selected [ngValue] ="1">Cada 1 minuto</option>
+                                <option [ngValue] ="5">Cada 5 minutos</option>
+                                <option [ngValue] ="10">Cada 10 minutos</option>
+                                <option [ngValue] ="30">Cada 30 minutos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align: right;">
+                        <button type="button" (click)="sendMasterProcess()" class="btn btn-dim btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

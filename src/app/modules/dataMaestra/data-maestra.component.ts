@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DataMaestraService } from '../services/dataMaestra.service';
 import swal from'sweetalert2';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -11,10 +12,14 @@ import swal from'sweetalert2';
 
   export class DataMaestraComponent implements OnInit {
 
+    masterProccessId: any;
+    masterTransactionName: any;
+    timeProcces: any;
+    modalRef?: BsModalRef | null;  
     public model: any = {};
     titularAlert: string = 'Hola';
 
-    constructor(private dataMaestraService: DataMaestraService){
+    constructor(private dataMaestraService: DataMaestraService,public modalService: BsModalService){
       this.model.listDataMaestra = [];
     }
     ngOnInit() {
@@ -69,5 +74,47 @@ import swal from'sweetalert2';
       })
       
     }
+
+    openModal(template: TemplateRef<any>, id: any, transactionName: any) {
+      this.masterProccessId = id;
+      this.masterTransactionName = transactionName;
+      this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});     
+      
+    }
+
+    check(){
+      console.log(this.timeProcces);
+    }
+
+    sendMasterProcess(){
+      console.log(this.timeProcces);   
+        if(this.timeProcces == null || this.timeProcces == undefined)
+        {
+          swal.fire('', 'Debes seleccionar algún intervalo de tiempo', 'warning')
+        }else{
+          console.log(this.masterProccessId);
+          console.log(this.timeProcces);          
+          this.dataMaestraService.sendMasterProccess( this.masterProccessId, this.timeProcces).subscribe(
+            res => {
+               this.modalRef?.hide();
+            }
+          );
+        }
+    }
     
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
