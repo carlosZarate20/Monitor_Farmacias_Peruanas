@@ -18,4 +18,11 @@ export class DashboardService{
         .get(`${environment.apiUrl}/listarTransactionDashboard`,{headers: headers})
         .pipe(map(res => res));
     }
+    getCantTransactionMonth(){
+        const headers = new HttpHeaders();
+        headers.append('Access-Control-Allow-Origin', '*');
+        return this.http
+        .get(`${environment.apiUrl}/getCantTransactionMonth`,{headers: headers})
+        .pipe(map(res => res));
+    }
 }

@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { NgChartsModule } from 'ng2-charts';
 import { DashboardService } from '../services/dashboard.service';
 import { DashBoardComponent } from './dashboard.component';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
         FormsModule, 
         CommonModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        NgChartsModule
     ],
     bootstrap: [DashBoardComponent],
     exports: [DashBoardComponent],
