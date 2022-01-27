@@ -2,8 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DataMaestraService } from '../services/dataMaestra.service';
 import swal from'sweetalert2';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-
-
 @Component({
     selector: 'app-data-maestra',
     templateUrl: './data-maestra.component.html',
@@ -17,6 +15,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     timeProcces: any;
     modalRef?: BsModalRef | null;  
     isActivated: boolean = false;
+    entityTask: any;
     public model: any = {};
     titularAlert: string = 'Hola';
 
@@ -77,11 +76,35 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
       
     }
 
-    openModal(template: TemplateRef<any>, id: any, transactionName: any) {
-      this.timeProcces = null;
-      this.masterProccessId = id;
-      this.masterTransactionName = transactionName;
+    openModal(template: TemplateRef<any>, codeTransaction: any, transactionName: any, state: any) {
+
+      if(state == "A")
+      {
+        this.dataMaestraService.getTransactionTaskByCode(codeTransaction).subscribe(
+          res => {
+            this.entityTask = res;    
+            var arraySplit = this.entityTask.cronExpression;
+            var hours = arraySplit.split(" ")[1];
+            var minutes = arraySplit.split(" ")[2];
+            var d = new Date();
+            d.setHours(hours);
+            d.setMinutes(minutes);
+            this.timeProcces = d;
+            this.isActivated = true;    
+          }
+        );   
+        
+        
+
+
+      }else{
+        this.timeProcces = null;
+        this.masterProccessId = codeTransaction;
+        this.masterTransactionName = transactionName;    
+        this.isActivated = false;   
+      }
       this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});     
+      
       
     }
 
@@ -96,8 +119,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
           swal.fire('', 'Debes seleccionar algún intervalo de tiempo', 'warning')
         }else{
           this.dataMaestraService.sendMasterProccess( this.masterProccessId, this.timeProcces, this.isActivated).subscribe(
-            res => {
+            res => {              
                this.modalRef?.hide();
+               this.getDataMaestra();
             }
           );
         }

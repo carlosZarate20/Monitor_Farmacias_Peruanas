@@ -30,6 +30,12 @@
                                             Ultima Ejecución
                                         </th>
                                         <th  style="text-align: center;">
+                                            Tarea Programada
+                                        </th>
+                                        <th  style="text-align: center;">
+                                            Intervalo de tiempo
+                                        </th>
+                                        <th  style="text-align: center;">
                                             Acciones
                                         </th>
                                         
@@ -56,8 +62,18 @@
                                             </div>
                                         </td>
                                         <td style="text-align: center;">
+                                            <div >
+                                                <span class="amount">{{items.cronExpression | cronTransform }}</span>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <div >
+                                                <span class="amount">{{items.taskState | programState }}</span>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center;">
                                             <img src="../../assets/images/ejecutar.svg" style="width: 20px; cursor: pointer; margin-right: 20px;" (click)="sendProvider(items.codeTransaction)">                                                                                      
-                                            <img src="../../assets/images/Editar.svg" style="width: 20px; cursor: pointer;" (click)="openModal(template, i+1, items.nameTransaccion)">                                                                            
+                                            <img src="../../assets/images/Editar.svg" style="width: 20px; cursor: pointer;" (click)="openModal(template, items.codeTransaction, items.nameTransaccion, items.taskState)">                                                                            
                                         </td>
                                     </tr><!-- tb-tnx-item -->
                                 </tbody>

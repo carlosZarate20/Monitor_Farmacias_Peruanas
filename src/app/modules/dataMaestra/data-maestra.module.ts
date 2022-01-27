@@ -7,6 +7,8 @@ import { DataMaestraService } from '../services/dataMaestra.service';
 import { DataMaestraComponent } from './data-maestra.component';
 import { TimepickerModule} 
 from 'ngx-bootstrap/timepicker';
+import { programStatePipe } from '../pipes/programState.pipe';
+import { cronTransformPipe } from '../pipes/cronTransform.pipe';
 
 const routes: Routes = [
     { path: '', component: DataMaestraComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         DataMaestraComponent,
+        programStatePipe,
+        cronTransformPipe
     ],
     imports: [
         RouterModule.forChild(routes),
