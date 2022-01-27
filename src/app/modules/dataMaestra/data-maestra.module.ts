@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { DataMaestraService } from '../services/dataMaestra.service';
 import { DataMaestraComponent } from './data-maestra.component';
+import { TimepickerModule} 
+from 'ngx-bootstrap/timepicker';
 
 const routes: Routes = [
     { path: '', component: DataMaestraComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
         FormsModule, 
         CommonModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        TimepickerModule.forRoot()
     ],
     bootstrap: [DataMaestraComponent],
     exports: [DataMaestraComponent],

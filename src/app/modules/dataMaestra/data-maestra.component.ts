@@ -16,8 +16,10 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     masterTransactionName: any;
     timeProcces: any;
     modalRef?: BsModalRef | null;  
+    isActivated: boolean = false;
     public model: any = {};
     titularAlert: string = 'Hola';
+
 
     constructor(private dataMaestraService: DataMaestraService,public modalService: BsModalService){
       this.model.listDataMaestra = [];
@@ -76,6 +78,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     }
 
     openModal(template: TemplateRef<any>, id: any, transactionName: any) {
+      this.timeProcces = null;
       this.masterProccessId = id;
       this.masterTransactionName = transactionName;
       this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});     
@@ -86,15 +89,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
       console.log(this.timeProcces);
     }
 
-    sendMasterProcess(){
-      console.log(this.timeProcces);   
+    sendMasterProcess(){     
+
         if(this.timeProcces == null || this.timeProcces == undefined)
         {
           swal.fire('', 'Debes seleccionar algún intervalo de tiempo', 'warning')
         }else{
-          console.log(this.masterProccessId);
-          console.log(this.timeProcces);          
-          this.dataMaestraService.sendMasterProccess( this.masterProccessId, this.timeProcces).subscribe(
+          this.dataMaestraService.sendMasterProccess( this.masterProccessId, this.timeProcces, this.isActivated).subscribe(
             res => {
                this.modalRef?.hide();
             }

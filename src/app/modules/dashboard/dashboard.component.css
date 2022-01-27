@@ -1,0 +1,21 @@
+.sqare-green {
+    width: 140px; 
+    height: 111px; 
+    background: rgba(197, 225, 165, 0.7);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.sqare-red {
+    width: 140px; 
+    height: 111px; 
+    background: rgba(239, 154, 154, 0.7);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    flex-direction: column;
+}

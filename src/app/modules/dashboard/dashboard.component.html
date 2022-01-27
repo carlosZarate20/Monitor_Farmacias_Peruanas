@@ -1,164 +1,191 @@
 <div class="nk-content ">
-    <div class="container-fluid">
+    <div class="container-fluid" style="    margin-bottom: 30px;">
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="nk-block">
-                    <div class="card card-bordered">
-                        <div class="card-inner">
-                            <div class="nk-block-head nk-block-head-sm">
-                                <div class="nk-block-between">
-                                    <div class="nk-block-head-content">
-                                        <h3 class="nk-block-title page-title">Transaciones del mes</h3>
-                                    </div>
-                                    <div class="nk-block-head-content">
-                                        <h3 class="nk-block-title page-title">Transaciones</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-gs">
-                                <div class="col-xxl-6">
-                                    <div class="row g-gs">
-                                        <div class="col-lg-6 col-xxl-12">
-                                            <div class="row g-gs">
-                                                <div class="col-sm-6 col-lg-12 col-xxl-6">
-                                                    <div class="card card-bordered">
-                                                        <div class="card-inner">
-                                                            <div class="card-title-group align-start mb-2">
-                                                                <div class="card-title">
-                                                                    <h6 class="title">Datos Maestros</h6>
-                                                                </div>
-                                                                
+                    <div class="row">
+                        <div class="col-6">
+                            <h3 class="nk-block-title page-title color-primary-text">Transacciones del mes</h3>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-inner">                             
+                                            <div class="card-title-group">                                                          
+                                              <div class="row" style="width: 100%;">
+                                                    <div class="col-6">
+                                                        <div>
+                                                            <div style="text-align: center;margin-bottom: 10px;">
+                                                                <span> <b style="font-size: 18px; color: #000000;">Datos Maestros</b></span>
                                                             </div>
-                                                            <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
-                                                                <div class="nk-sale-data">
-                                                                    <!-- <span class="amount">9.69K</span>
-                                                                    <span class="sub-title"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>1.93%</span>since last month</span> -->
+                                                            <div style="display: flex; width: 100%; justify-content: space-evenly;">
+                                                                <div class="sqare-green">
+                                                                    <span style="
+                                                                    font-family: Gotham;
+                                                                    font-style: normal;
+                                                                    font-weight: bolder;
+                                                                    font-size: 40px;
+                                                                    line-height: 49px;
+                                                                    color: #1B5E20;
+                                                                    ">200</span>
+                                                                    <span style="color: #1B5E20; font-weight: 100;">
+                                                                        Exitosas                                                                       
+                                                                    </span>
                                                                 </div>
-                                                                <div class="nk-sales-ck">
-                                                                    <canvas class="sales-bar-chart" id="activeSubscription"></canvas>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- .card -->
-                                                </div><!-- .col -->
-                                                <div class="col-sm-6 col-lg-12 col-xxl-6">
-                                                    <div class="card card-bordered">
-                                                        <div class="card-inner">
-                                                            <div class="card-title-group align-start mb-2">
-                                                                <div class="card-title">
-                                                                    <h6 class="title">Transaciones Almacén Li</h6>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            <div class="align-end flex-sm-wrap g-4 flex-md-nowrap">
-                                                                <div class="nk-sale-data">
-                                                                    <!-- <span class="amount">346.2</span>
-                                                                    <span class="sub-title"><span class="change up text-success"><em class="icon ni ni-arrow-long-up"></em>2.45%</span>since last week</span> -->
-                                                                </div>
-                                                                <div class="nk-sales-ck">
-                                                                    <!-- <canvas class="sales-bar-chart" id="totalSubscription"></canvas> -->
+                                                                <div class="sqare-red">
+                                                                    <span style="
+                                                                    font-family: Gotham;
+                                                                    font-style: normal;
+                                                                    font-weight: bolder;
+                                                                    font-size: 40px;
+                                                                    line-height: 49px;
+                                                                    color: #C62828
+;
+                                                                    ">2</span>
+                                                                    <span style="color: #C62828; font-weight: 100;">
+                                                                        Fallidas                                                                       
+                                                                    </span>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div><!-- .card -->
-                                                </div><!-- .col -->
-                                            </div><!-- .row -->
-                                        </div><!-- .col -->
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xxl-6">
-                                    <div class="card card-bordered h-100">
-                                        <div class="card-inner h-100 stretch flex-column">
-                                            <div class="card-title-group">
-                                                <!-- <div class="card-title card-title-sm">
-                                                    <h6 class="title">Sessions by Device</h6>
-                                                </div> -->
-                                                <!-- <div class="card-tools">
-                                                    <div class="drodown">
-                                                        <a href="#" class="dropdown-toggle dropdown-indicator btn btn-sm btn-outline-light btn-white" data-toggle="dropdown">30 Days</a>
-                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li><a href="#"><span>7 Days</span></a></li>
-                                                                <li><a href="#"><span>15 Days</span></a></li>
-                                                                <li><a href="#"><span>30 Days</span></a></li>
-                                                            </ul>
+                                                      
                                                         </div>
                                                     </div>
-                                                </div> -->
-                                                <div class="payment-doughnut-ck">
-                                                    <canvas class="analytics-doughnut PaymentDoughnutData" id="PaymentDoughnutData"></canvas>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="device-status my-auto">
-                                                <div class="device-status-ck">
-                                                    <canvas class="analytics-doughnut" id="deviceStatusData"></canvas>
-                                                </div>
+                                                    <div class="col-6">
+                                                        <div>
+                                                            <div style="text-align: center;margin-bottom: 10px;">
+                                                                <span> <b style="font-size: 18px;color: #000000;">Transacciones Almacén LI</b> </span>
+                                                            </div>
+                                                            <div style="display: flex; width: 100%; justify-content: space-evenly;">
+                                                                <div class="sqare-green">
+                                                                    <span style="
+                                                                    font-family: Gotham;
+                                                                    font-style: normal;
+                                                                    font-weight: bolder;
+                                                                    font-size: 40px;
+                                                                    line-height: 49px;
+                                                                    color: #1B5E20;
+                                                                    ">200</span>
+                                                                    <span style="color: #1B5E20;    font-weight: 100;">
+                                                                        Exitosas                                                                       
+                                                                    </span>
+                                                                </div>
+                                                                <div class="sqare-red">
+                                                                    <span style="
+                                                                    font-family: Gotham;
+                                                                    font-style: normal;
+                                                                    font-weight: bolder;
+                                                                    font-size: 40px;
+                                                                    line-height: 49px;
+                                                                    color: #C62828
+;
+                                                                    ">2</span>
+                                                                    <span style="color: #C62828;    font-weight: 100;">
+                                                                        Fallidas                                                                       
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                              </div>                                          
                                                 
-                                            </div>.device-status -->
+                                            </div>                                                            
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
-                            <div class="nk-block-head nk-block-head-sm">
-                                <div class="nk-block-between">
-                                    <div class="nk-block-head-content">
-                                        <h3 class="nk-block-title page-title">Transaciones recientes</h3>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="nk-block-title page-title color-primary-text">Transacciones</h3>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-inner">     
+                                            <div class="card-title-group">
+                                                <div class="row">
+
+                                                </div>
+                                            </div>                                                                                          
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr class="tb-tnx-head">
-                                            <th scope="col"><span class="">Identificador</span></th>
-                                            <th>
-                                                <span class="tb-tnx-total">Transacción</span>
-                                            </th>
-                                            <th>
-                                                <span class="tb-tnx-total">
-                                                    <span>Estado</span>
-                                                </span>
-                                            </th>
-                                            <th >
-                                                <span class="tb-tnx-total">Fecha y Hora</span>
-                                            </th>
-                                            <th >
-                                                <span class="tb-tnx-total">Acciones</span>
-                                            </th>
-                                        </tr><!-- tb-tnx-item -->
-                                    </thead>
-                                    <tbody>
-                                        <tr class="tb-tnx-item" *ngFor="let items of model.listTransaction; let i = index">
-                                            <td class="">
-                                                <span>{{items.identTransaction}}</span>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <span class="title">{{items.nameTransaction}}</span>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <span class="amount">{{items.estado}}</span>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <span class="amount">{{items.fechaTransaccion}}</span>
-                                            </td>
-                                            <td class="tb-tnx-amount">
-                                                <div class="tb-tnx-total"> 
-                                                    <em class="fas fa-eye" (click)="detailTransaction(items.idTran)"></em> 
-                                                </div>
-                                                
-                                            </td>
-                                        </tr><!-- tb-tnx-item -->
-                                    
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
+                        </div>                                
+                    </div>    
+                </div>               
                 
             </div>
         </div>
+    </div>
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+<div class="nk-content-body">
+    <div class="nl-block">
+        <div class="card">
+            <div class="card-inner">
+                <div class="nk-block-head nk-block-head-sm" style="margin-top: 20px;">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title color-primary-text">Transacciones recientes</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="tb-tnx-head">
+                                <th style="text-align: center;" scope="col">Identificador</th>
+                                <th style="text-align: center;">
+                                    <!-- <span class="tb-tnx-total" >Transacción</span> -->
+                                    Transacción
+                                </th>
+                                <th style="text-align: center;">
+                                    Estado
+                                    <!-- <span class="tb-tnx-total">
+                                        <span></span>
+                                    </span> -->
+                                </th>
+                                <th style="text-align: center;" >
+                                    <!-- <span class="tb-tnx-total">Fecha y Hora</span> -->
+                                    Fecha y Hora
+                                </th>
+                                <th style="text-align: center;" >
+                                    <!-- <span class="tb-tnx-total"></span> -->
+                                    Acciones
+                                </th>
+                            </tr><!-- tb-tnx-item -->
+                        </thead>
+                        <tbody>
+                            <tr class="tb-tnx-item" *ngFor="let items of model.listTransaction; let i = index">
+                                <td style="text-align: center;">
+                                    <span>{{items.identTransaction}}</span>
+                                </td>
+                                <td class="tb-tnx-info" style="text-align: center;">
+                                    <span class="title">{{items.nameTransaction}}</span>
+                                </td>
+                                <td class="tb-tnx-info" style="text-align: center;">
+                                    <span class="amount">{{items.estado}}</span>
+                                </td>
+                                <td class="tb-tnx-info" style="text-align: center;">
+                                    <span class="amount">{{items.fechaTransaccion}}</span>
+                                </td>
+                                <td class="tb-tnx-amount" style="text-align: center;">
+                                    <div class="tb-tnx-total"> 
+                                        <img src="../../assets/images/Visualizar.svg" style="width: 25px; cursor: pointer;" (click)="detailTransaction(items.idTran)">                                      
+                                    </div>
+                                    
+                                </td>
+                            </tr><!-- tb-tnx-item -->
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+        </div>
+
+
     </div>
 </div>

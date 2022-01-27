@@ -8,58 +8,56 @@
                             <div class="nk-block-head nk-block-head-sm">
                                 <div class="nk-block-between">
                                     <div class="nk-block-head-content">
-                                        <h3 class="nk-block-title page-title">Data Maestra</h3>
+                                        <h3 class="nk-block-title page-title color-primary-text" >Data Maestra</h3>
                                     </div>
                                 </div>
                             </div>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="tb-tnx-head">
-                                        <th class="tb-tnx-id"><span class="">Transaccion</span></th>
+                                        <th class="tb-tnx-id" style="text-align: center;">Transacción</th>
                                         
-                                        <th class="tb-tnx-amount is-alt">
-                                            <span class="tb-tnx-total">Tipo</span>
+                                        <th  style="text-align: center;">
+                                            Tipo
                                         </th>
                                         
-                                        <th class="tb-tnx-info">
+                                        <th style="text-align: center;">
                                             <span class="tb-tnx-desc d-none d-sm-inline-block">
-                                                <span>Cantidad Transacciones</span>
+                                                Cantidad Transacciones
                                             </span>
                                         </th>
-                                        <th class="tb-tnx-amount is-alt">
-                                            <span class="tb-tnx-total">Ultima Ejecución</span>
+                                        <th  style="text-align: center;">
+                                            Ultima Ejecución
                                         </th>
-                                        <th class="tb-tnx-amount is-alt">
-                                            <span class="tb-tnx-total">Acciones</span>
+                                        <th  style="text-align: center;">
+                                            Acciones
                                         </th>
                                         
                                     </tr><!-- tb-tnx-item -->
                                 </thead>
                                 <tbody>
                                     <tr class="tb-tnx-item" *ngFor="let items of model.listDataMaestra; let i = index">
-                                        <td class="tb-tnx-id">
+                                        <td style="text-align: center;">
                                             <span>{{items.nameTransaccion}}</span>
                                         </td>
-                                        <td class="tb-tnx-info">
-                                            <div class="tb-tnx-desc">
+                                        <td style="text-align: center;">
+                                            <div >
                                                 <span class="title">{{items.typeTransaction}}</span>
                                             </div>
                                         </td>
-                                        <td class="tb-tnx-info">
-                                            <div class="tb-tnx-desc">
+                                        <td style="text-align: center;">
+                                            <div >
                                                 <span class="title">{{items.cantTransacciones}}</span>
                                             </div>
                                         </td>
-                                        <td class="tb-tnx-amount is-alt">
-                                            <div class="tb-tnx-total">
+                                        <td style="text-align: center;">
+                                            <div >
                                                 <span class="amount">{{items.ultimaEjecucion}}</span>
                                             </div>
                                         </td>
-                                        <td class="tb-tnx-amount">
-                                            <div class="tb-tnx-total">                                                
-                                                <em class="fas fa-sync-alt" (click)="sendProvider(items.codeTransaction)"></em>
-                                                <em class="fas fa-pencil-alt" (click)="openModal(template, i+1, items.nameTransaccion)"></em>                                                                                                                               
-                                            </div>
+                                        <td style="text-align: center;">
+                                            <img src="../../assets/images/ejecutar.svg" style="width: 20px; cursor: pointer; margin-right: 20px;" (click)="sendProvider(items.codeTransaction)">                                                                                      
+                                            <img src="../../assets/images/Editar.svg" style="width: 20px; cursor: pointer;" (click)="openModal(template, i+1, items.nameTransaccion)">                                                                            
                                         </td>
                                     </tr><!-- tb-tnx-item -->
                                 </tbody>
@@ -83,15 +81,30 @@
             <div class="row g-gs">       
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label" for="fv-topics">Intervalo de tiempo</label>
+                      
                         <div class="form-control-wrap ">
-                            <select class="form-control form-select" [(ngModel)]="timeProcces" id="fv-topics" name="fv-topics" data-placeholder="Seleccione una opción" required>
-                                <!-- <option label="Escoge una opción" value=""></option> -->
+                            <!-- <p></p> -->
+                            <!-- <select class="form-control form-select" [(ngModel)]="timeProcces" id="fv-topics" name="fv-topics" data-placeholder="Seleccione una opción" required>                           
                                 <option selected [ngValue] ="1">Cada 1 minuto</option>
                                 <option [ngValue] ="5">Cada 5 minutos</option>
                                 <option [ngValue] ="10">Cada 10 minutos</option>
                                 <option [ngValue] ="30">Cada 30 minutos</option>
-                            </select>
+                            </select> -->
+                            <!-- <div class="form-group">
+                                <label class="form-label">Cada día a las</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control time-picker" placeholder="Input placeholder">
+                                </div>
+                            </div> -->
+                           
+                        </div>
+                          <label class="form-label" for="fv-topics">Cada día a las :</label>
+                        <timepicker id="timepickerId" name="timepickerId" [(ngModel)]="timeProcces" [showMeridian]="false"></timepicker>                      
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="isActivated" class="custom-control-input" id="test" name="test">
+                            <label class="custom-control-label" for="test">Habilitado</label>
                         </div>
                     </div>
                 </div>

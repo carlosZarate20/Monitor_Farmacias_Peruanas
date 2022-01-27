@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.btn > span:only-child, .dual-listbox .dual-listbox__button > span:only-child { 
+    display: flex !important;
+    width: none;
+}
+
+.color-primary-text {
+    color: #DB291C;
+}
