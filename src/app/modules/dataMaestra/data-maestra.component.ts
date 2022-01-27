@@ -90,19 +90,20 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
             d.setHours(hours);
             d.setMinutes(minutes);
             this.timeProcces = d;
-            this.isActivated = true;    
+            this.isActivated = true;   
+             
           }
-        );   
-        
-        
+        );      
 
 
-      }else{
+      }else{ 
+        
         this.timeProcces = null;
-        this.masterProccessId = codeTransaction;
-        this.masterTransactionName = transactionName;    
+    
         this.isActivated = false;   
       }
+      this.masterProccessId = codeTransaction;
+      this.masterTransactionName = transactionName;   
       this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});     
       
       
