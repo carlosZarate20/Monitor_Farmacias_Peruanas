@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { DetailTransaction } from "../model/DetailTransaction";
+import { DetailsService } from "../services/details.service";
 
 @Component({
     selector: 'app-details',
@@ -9,7 +11,8 @@ import { ActivatedRoute } from "@angular/router";
 
 export class DetailsComponent implements OnInit {
     public value: any;
-    constructor(public route: ActivatedRoute){
+    public detailTransaction: DetailTransaction = new DetailTransaction();
+    constructor(public route: ActivatedRoute, private detailsService: DetailsService){
     }
     ngOnInit() {
         this.value = this.route.snapshot.paramMap.get('id');
@@ -17,6 +20,17 @@ export class DetailsComponent implements OnInit {
     }
 
     getDetailsTransaction(id: any){
-        console.log('Detalle de evento ' + id);
+
+        this.detailsService.getDetailTransaction(id).subscribe(
+            (res: any) => {
+                this.detailTransaction.nameTransaction = res.nameTransaction;
+                this.detailTransaction.dateTransaction = res.dateTransaction;
+                this.detailTransaction.state = res.state;
+                this.detailTransaction.request = res.request;
+                this.detailTransaction.response = res.response;
+                console.log(res);
+            }
+        )
+        
     }
 }

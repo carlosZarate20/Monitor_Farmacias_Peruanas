@@ -4,6 +4,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { DashboardService } from "../services/dashboard.service";
+import { DetailsService } from "../services/details.service";
 import { DetailsComponent } from "./details.component";
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
     ],
     bootstrap: [DetailsComponent],
     exports: [DetailsComponent],
-    providers: [DashboardService]
+    providers: [DetailsService]
 })
 
 export class DetailsModule { }
