@@ -18,7 +18,7 @@ export class MainComponent implements OnInit{
 
 
 
-    this.model.menu.dataMaestra.items.push({ url: '/main/dataMaestra', name: 'Data Maestra'});
+    this.model.menu.dataMaestra.items.push({ url: '/main/dataMaestra', name: 'Programación'});
     this.model.menu.dashboard.items.push({ url: '/main/dashboard', name: 'Dashboard'});
     this.model.menu.transacciones.items.push({ url: '/main/transacciones', name: 'Transacciones'});
   }

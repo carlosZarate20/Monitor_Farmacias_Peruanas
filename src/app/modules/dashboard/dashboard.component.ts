@@ -42,7 +42,7 @@ import { DataTransaction } from '../model/DataTransaction';
             datasets: [
               { data: [ 
                 this.dataTransaction.cantMaestros, 
-                this.dataTransaction.cantTransacciones
+                2
               ] }
             ],
           }
