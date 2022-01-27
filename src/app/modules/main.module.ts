@@ -23,6 +23,11 @@ const routes: Routes = [
         path: 'transacciones',
         component: MainComponent,
         loadChildren: () => import('./transacciones/transacciones.module').then(m => m.TransacionesModule)
+    },
+    {
+        path: 'details/:id',
+        component: MainComponent,
+        loadChildren: () => import('./details/details.module').then(m => m.DetailsModule)
     }
 ];
 

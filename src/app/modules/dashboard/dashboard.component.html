@@ -86,12 +86,12 @@
                                                     </div>
                                                 </div> -->
                                             </div>
-                                            <div class="device-status my-auto">
+                                            <!-- <div class="device-status my-auto">
                                                 <div class="device-status-ck">
                                                     <canvas class="analytics-doughnut" id="deviceStatusData"></canvas>
                                                 </div>
                                                 
-                                            </div><!-- .device-status -->
+                                            </div>.device-status -->
                                         </div>
                                     </div>
                                 </div>
@@ -104,47 +104,53 @@
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="tb-tnx-head">
-                                        <th class="tb-tnx-id"><span class="">Transaccion</span></th>
-                                        <th class="tb-tnx-info">
-                                            <span class="tb-tnx-desc d-none d-sm-inline-block">
-                                                <span>Cantidad Transacciones</span>
-                                            </span>
-                                        </th>
-                                        <th class="tb-tnx-amount is-alt">
-                                            <span class="tb-tnx-total">Ultima Ejecución</span>
-                                        </th>
-                                        <th class="tb-tnx-amount is-alt">
-                                            <span class="tb-tnx-total">Acciones</span>
-                                        </th>
-                                    </tr><!-- tb-tnx-item -->
-                                </thead>
-                                <tbody>
-                                    <tr class="tb-tnx-item">
-                                        <td class="tb-tnx-id">
-                                            <span>Maestro Proveedor</span>
-                                        </td>
-                                        <td class="tb-tnx-info">
-                                            <div class="tb-tnx-desc">
-                                                <span class="title">0</span>
-                                            </div>
-                                        </td>
-                                        <td class="tb-tnx-amount is-alt">
-                                            <div class="tb-tnx-total">
-                                                <span class="amount">24/01/2022 09:32:58 a.m.</span>
-                                            </div>
-                                        </td>
-                                        <td class="tb-tnx-amount">
-                                            <div class="tb-tnx-total">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="tb-tnx-head">
+                                            <th scope="col"><span class="">Identificador</span></th>
+                                            <th>
+                                                <span class="tb-tnx-total">Transacción</span>
+                                            </th>
+                                            <th>
+                                                <span class="tb-tnx-total">
+                                                    <span>Estado</span>
+                                                </span>
+                                            </th>
+                                            <th >
+                                                <span class="tb-tnx-total">Fecha y Hora</span>
+                                            </th>
+                                            <th >
+                                                <span class="tb-tnx-total">Acciones</span>
+                                            </th>
+                                        </tr><!-- tb-tnx-item -->
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tb-tnx-item" *ngFor="let items of model.listTransaction; let i = index">
+                                            <td class="">
+                                                <span>{{items.identTransaction}}</span>
+                                            </td>
+                                            <td class="tb-tnx-info">
+                                                <span class="title">{{items.nameTransaction}}</span>
+                                            </td>
+                                            <td class="tb-tnx-info">
+                                                <span class="amount">{{items.estado}}</span>
+                                            </td>
+                                            <td class="tb-tnx-info">
+                                                <span class="amount">{{items.fechaTransaccion}}</span>
+                                            </td>
+                                            <td class="tb-tnx-amount">
+                                                <div class="tb-tnx-total"> 
+                                                    <em class="fas fa-eye" (click)="detailTransaction(items.idTran)"></em> 
+                                                </div>
                                                 
-                                                <em class="fas fa-sync-alt"></em>
-                                            </div>
-                                        </td>
-                                    </tr><!-- tb-tnx-item -->
-                                </tbody>
-                            </table>
+                                            </td>
+                                        </tr><!-- tb-tnx-item -->
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
