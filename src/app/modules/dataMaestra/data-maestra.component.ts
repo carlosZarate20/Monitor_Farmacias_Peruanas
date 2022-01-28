@@ -84,8 +84,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
           res => {
             this.entityTask = res;    
             var arraySplit = this.entityTask.cronExpression;
-            var hours = arraySplit.split(" ")[1];
-            var minutes = arraySplit.split(" ")[2];
+            var hours = arraySplit.split(" ")[2];
+            var minutes = arraySplit.split(" ")[1];
             var d = new Date();
             d.setHours(hours);
             d.setMinutes(minutes);

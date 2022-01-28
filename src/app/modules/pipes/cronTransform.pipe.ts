@@ -11,10 +11,21 @@ export class cronTransformPipe implements PipeTransform {
     if(value != null && value != undefined)
     {
         var arraySplit = value.split(" ");
-        response = `Cada día a las ${arraySplit[1]}:${arraySplit[2]}`;       
+        var hour = arraySplit[2];
+        var minutes = arraySplit[1];
+        response = `Cada día a las ${this.getPathZero(hour, 2)}:${this.getPathZero(minutes, 2)}`;
     }
       
     return response;
+  }
+
+  getPathZero(number: any, length: any){
+    var str = '' + number;
+    while (str.length < length) {
+        str = '0' + str;
+    }
+   
+    return str;
   }
 
 }
