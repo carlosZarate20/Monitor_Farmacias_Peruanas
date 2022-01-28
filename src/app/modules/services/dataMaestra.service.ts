@@ -22,11 +22,11 @@ export class DataMaestraService{
     }
 
     sendMasterProvider(typeOp: any){
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZXJ2aWNpb3N3ZWIiLCJwcm9maWxlIjp7ImlkIjoxLCJuYW1lIjoiU1VQRVJWSVNPUiIsInN0YXRlIjoiQUNUSVZFIiwidHlwZSI6IldFQiJ9LCJpYXQiOjE2NDI3OTM5MzcsImV4cCI6MTY0MzY1NzkzN30.YkbNbgT0V1yJjmKE453OBFmlHVnuCFLlzm_zmQaahc4';
-        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+        // const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZXJ2aWNpb3N3ZWIiLCJwcm9maWxlIjp7ImlkIjoxLCJuYW1lIjoiU1VQRVJWSVNPUiIsInN0YXRlIjoiQUNUSVZFIiwidHlwZSI6IldFQiJ9LCJpYXQiOjE2NDI3OTM5MzcsImV4cCI6MTY0MzY1NzkzN30.YkbNbgT0V1yJjmKE453OBFmlHVnuCFLlzm_zmQaahc4';
+        // const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
         
         return this.http
-        .post(`${environment.apiUrl}/enviar/${typeOp}`,{}, {'headers' : headers})
+        .post(`${environment.apiUrl}/enviar/${typeOp}`,{})
         .pipe(map(res => res));
     }
 
