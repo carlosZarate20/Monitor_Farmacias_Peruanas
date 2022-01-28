@@ -78,34 +78,30 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
     openModal(template: TemplateRef<any>, codeTransaction: any, transactionName: any, state: any) {
 
-      if(state == "A")
-      {
-        this.dataMaestraService.getTransactionTaskByCode(codeTransaction).subscribe(
-          res => {
-            this.entityTask = res;    
-            var arraySplit = this.entityTask.cronExpression;
-            var hours = arraySplit.split(" ")[2];
-            var minutes = arraySplit.split(" ")[1];
-            var d = new Date();
-            d.setHours(hours);
-            d.setMinutes(minutes);
-            this.timeProcces = d;
-            this.isActivated = true;   
-             
+
+      this.dataMaestraService.getTransactionTaskByCode(codeTransaction).subscribe(
+        res => {
+          this.entityTask = res;    
+          var arraySplit = this.entityTask.cronExpression;
+          var hours = arraySplit.split(" ")[2];
+          var minutes = arraySplit.split(" ")[1];
+          var d = new Date();
+          d.setHours(hours);
+          d.setMinutes(minutes);
+          this.timeProcces = d;
+          if(state == "I")
+          {
+            this.isActivated = false;  
+          }else{
+            this.isActivated = true;  
           }
-        );      
-
-
-      }else{ 
-        
-        this.timeProcces = null;
-    
-        this.isActivated = false;   
-      }
+           
+        }
+      );   
+      
       this.masterProccessId = codeTransaction;
       this.masterTransactionName = transactionName;   
-      this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});     
-      
+      this.modalRef = this.modalService.show(template, { id: 1, class: 'modal-lg'});          
       
     }
 
