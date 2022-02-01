@@ -4,6 +4,10 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { TransaccionesComponent } from "./transacciones.component";
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TransactionLogService } from "../services/transactionLog.service";
 
 const routes: Routes = [
     { path: '', component: TransaccionesComponent},
@@ -15,12 +19,15 @@ const routes: Routes = [
     ],
     imports: [
         RouterModule.forChild(routes),
+        PaginationModule.forRoot(),
         FormsModule, 
         CommonModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        BsDatepickerModule.forRoot()
     ],
     bootstrap: [TransaccionesComponent],
-    exports: [TransaccionesComponent]
+    exports: [TransaccionesComponent],
+    providers: [TransactionLogService]
 })
 export class TransacionesModule { }

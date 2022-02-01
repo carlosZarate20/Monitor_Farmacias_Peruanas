@@ -158,7 +158,7 @@
                             </tr><!-- tb-tnx-item -->
                         </thead>
                         <tbody>
-                            <tr class="tb-tnx-item" *ngFor="let items of model.listTransaction; let i = index">
+                            <tr class="tb-tnx-item" *ngFor="let items of model.listTransaction">
                                 <td style="text-align: center;">
                                     <span>{{items.identTransaction}}</span>
                                 </td>
@@ -166,7 +166,7 @@
                                     <span class="title">{{items.nameTransaction}}</span>
                                 </td>
                                 <td class="tb-tnx-info" style="text-align: center;">
-                                    <span class="amount">{{items.estado}}</span>
+                                    <span class="amount">{{items.estado | stateTransaction}}</span>
                                 </td>
                                 <td class="tb-tnx-info" style="text-align: center;">
                                     <span class="amount">{{items.fechaTransaccion}}</span>

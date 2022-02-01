@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
+import { stateTransactionPipe } from '../pipes/stateTransaction.pipe';
 import { DashboardService } from '../services/dashboard.service';
 import { DashBoardComponent } from './dashboard.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         DashBoardComponent,
+        stateTransactionPipe
     ],
     imports: [
         RouterModule.forChild(routes),

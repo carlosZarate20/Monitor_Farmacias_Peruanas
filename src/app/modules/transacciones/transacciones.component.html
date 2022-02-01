@@ -2,7 +2,6 @@
     <div class="container-fluid">
         <div class="nk-content-inner">
             <div class="nk-content-body">
-                
                 <div class="nk-block">
                     <div class="card card-bordered">
                         <div class="card-inner">
@@ -13,9 +12,75 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row gy-4">
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Transacción</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-control">
+                                                <option value="default_option">Transaccion</option>
+                                                <option *ngFor="let item of model.listNameTransaction" [value] = "item.type">{{item.description}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <select class="form-control" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </select> -->
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Estado</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-control">
+                                                <option value="default_option">Tipo de Estado</option>
+                                                <option *ngFor="let item of model.listErrorType" [value] = "item.typeError">{{item.description}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--col-->
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Fecha Inicio</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-calendar"></em>
+                                            </div>
+                                            <input type="text"
+                                                 placeholder="Fecha Inicio"
+                                                 class="form-control"
+                                                 bsDatepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Fecha Fin</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-calendar"></em>
+                                            </div>
+                                            <input type="text"
+                                                 placeholder="Fecha Fin"
+                                                 class="form-control"
+                                                 bsDatepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-block-head nk-block-head-sm">
+                            </div>
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                    <tr class="tb-tnx-head">
+                                    <tr class="tb-tnx-head" style="text-align: center;">
                                         <th style="text-align: center;">Identificador</th>
                                         <th style="text-align: center;">
                                             Transaccion
@@ -29,17 +94,40 @@
                                             Fecha y Hora Inicio
                                         </th>
                                         <th style="text-align: center;">
-                                            Fecha y Hora Fin
-                                        </th>
-                                        <th style="text-align: center;">
                                             Acciones
                                         </th>
                                     </tr><!-- tb-tnx-item -->
                                 </thead>
                                 <tbody>
-                                    
+                                    <tr class="tb-tnx-item" style="text-align: center;" *ngFor="let items of model.listTransactionLog">
+                                        <td>
+                                            {{items.identTransaction}}
+                                        </td>
+                                        <td>
+                                            {{items.nameTransaction}}
+                                        </td>
+                                        <td>
+                                            {{items.estado}}
+                                        </td>
+                                        <td>
+                                            {{items.fechaTransaccion}}
+                                        </td>
+                                        <td>
+                                            <div class="tb-tnx-total"> 
+                                                <img src="../../assets/images/Visualizar.svg" style="width: 25px; cursor: pointer;" (click)="detailTransaction(items.idTran)">                                      
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
+                            <div class="row" >
+                                <div class="col-xs-12 col-12" >
+                                    <pagination [boundaryLinks]="true" [totalItems]="model.listTransactionLog.length" (pageChanged)="pageChanged($event)" [itemsPerPage]="1"
+                                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">                           
+                                    </pagination>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
