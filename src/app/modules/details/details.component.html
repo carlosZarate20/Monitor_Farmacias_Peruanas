@@ -1,41 +1,94 @@
-<div class="nk-content ">
-    <div class="container-fluid">
-        <div class="nk-content-inner">
-            <div class="nk-content-body">
-                <div class="nk-block">
-                    <div class="card card-bordered">
-                        <div class="card-inner">
-                            <h4 class="card-title color-primary-text">Detalle de Log</h4>
-                            <div>
-                                <table class="table table-bordered table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Operación</th>
-                                            <td>{{detailTransaction.nameTransaction}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Estado</th>
-                                            <td>{{detailTransaction.state | stateDetail}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Fecha</th>
-                                            <td>{{detailTransaction.dateTransaction}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Datos de envio</th>
-                                            <td>{{detailTransaction.request}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Datos de respuesta</th>
-                                            <td>{{detailTransaction.response}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block">
+          <div class="card card-bordered">
+            <div class="card-inner">
+              <h4 class="card-title color-primary-text">Detalle de Log</h4>
+              <div>
+                <table class="table table-bordered table-striped">
+                  <tbody>
+                    <tr>
+                      <th>Operación</th>
+                      <td>{{ detailTransaction.nameTransaction }}</td>
+                    </tr>
+                    <tr>
+                      <th>Estado</th>
+                      <td>{{ detailTransaction.state | stateDetail }}</td>
+                    </tr>
+                    <tr>
+                      <th>Fecha</th>
+                      <td>{{ detailTransaction.dateTransaction }}</td>
+                    </tr>
+                    <tr>
+                      <th>Datos de envio</th>
+                      <td>{{ detailTransaction.request }}</td>
+                    </tr>
+                    <tr>
+                      <th>Datos de respuesta</th>
+                      <td>{{ detailTransaction.response }}</td>
+                    </tr>
+
+                    <tr>
+                      <th>Errores Encontrados</th>
+                      <td>
+                        <div
+                          *ngIf="
+                            detailTransaction.transactionLogErrors.length == 0
+                          "
+                        >
+                          -
                         </div>
-                    </div>
-                </div>
+                        <table
+                          *ngIf="
+                            detailTransaction.transactionLogErrors.length > 0
+                          "
+                          class="table table-bordered table-striped"
+                        >
+                          <thead>
+                            <tr class="tb-tnx-head" style="text-align: center">
+                              <th
+                                class="tb-tnx-head"
+                                style="text-align: center"
+                              >
+                                Identificador
+                              </th>
+                              <th
+                                class="tb-tnx-head"
+                                style="text-align: center"
+                              >
+                                Mensaje de Error
+                              </th>
+                            </tr>
+                            <!-- tb-tnx-item -->
+                          </thead>
+                          <tbody>
+                            <tr
+                              class="tb-tnx-item"
+                              style="text-align: center"
+                              *ngFor="
+                                let items of detailTransaction.transactionLogErrors
+                              "
+                            >
+                              <td>
+                                {{ items.identifier }}
+                              </td>
+                              <td>
+                                {{ items.message }}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

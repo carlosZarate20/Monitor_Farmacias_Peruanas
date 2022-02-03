@@ -28,6 +28,7 @@ export class DetailsComponent implements OnInit {
                 this.detailTransaction.state = res.state;
                 this.detailTransaction.request = res.request;
                 this.detailTransaction.response = res.response;
+                this.detailTransaction.transactionLogErrors = res.transactionLogErrors;
                 console.log(res);
             }
         )
