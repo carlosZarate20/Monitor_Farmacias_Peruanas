@@ -23,21 +23,18 @@
                     </tr>
                     <tr>
                       <th>Datos de envio</th>
-                      <td>{{ detailTransaction.request }}</td>
+                      <td><textarea class="form-control no-resize" id="review" name="review" rows="4" cols="50" disabled>{{ detailTransaction.request }}</textarea></td>
                     </tr>
                     <tr>
                       <th>Datos de respuesta</th>
-                      <td>{{ detailTransaction.response }}</td>
+                      <td><textarea class="form-control no-resize" id="review" name="review" rows="4" cols="50" disabled>{{ detailTransaction.response }}</textarea></td>
                     </tr>
 
                     <tr>
                       <th>Errores Encontrados</th>
                       <td>
-                        <div
-                          *ngIf="
-                            detailTransaction.transactionLogErrors.length == 0
-                          "
-                        >
+                        <div *ngIf="detailTransaction.transactionLogErrors.length == 0
+                          ">
                           -
                         </div>
                         <table

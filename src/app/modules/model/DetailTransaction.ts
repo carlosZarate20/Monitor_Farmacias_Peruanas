@@ -4,5 +4,5 @@ export class DetailTransaction {
     public dateTransaction!: string;
     public request!: string;
     public response!: string;
-    public transactionLogErrors!: Array<any>;
+    public transactionLogErrors: Array<any> = [];
 }

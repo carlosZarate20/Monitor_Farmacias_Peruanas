@@ -9,6 +9,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     RouterModule.forRoot([]),
     ModalModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]

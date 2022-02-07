@@ -30,6 +30,7 @@ export class DetailsComponent implements OnInit {
                 this.detailTransaction.response = res.response;
                 this.detailTransaction.transactionLogErrors = res.transactionLogErrors;
                 console.log(res);
+                console.log(this.detailTransaction.transactionLogErrors.length);
             }
         )
         

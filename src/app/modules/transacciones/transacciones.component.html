@@ -13,30 +13,24 @@
                                 </div>
                             </div>
                             <div class="row gy-4">
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                <div class="col-md-6 col-lg-4 col-xxl-2">
                                     <div class="form-group">
                                         <label class="form-label">Transacción</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-control">
-                                                <option value="default_option">Transaccion</option>
+                                            <select class="form-control" [(ngModel)]="dataSearchTransaction.typeTransaction">
+                                                <option value="">Transaccion</option>
                                                 <option *ngFor="let item of model.listNameTransaction" [value] = "item.type">{{item.description}}</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- <select class="form-control" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                      </select> -->
                                 </div>
-                                <div class="col-md-6 col-lg-4 col-xxl-3">
+                                <div class="col-md-6 col-lg-4 col-xxl-2">
                                     <div class="form-group">
                                         <label class="form-label">Estado</label>
                                         <div class="form-control-wrap">
-                                            <select class="form-control">
-                                                <option value="default_option">Tipo de Estado</option>
-                                                <option *ngFor="let item of model.listErrorType" [value] = "item.typeError">{{item.description}}</option>
+                                            <select class="form-control" [(ngModel)]="dataSearchTransaction.state">
+                                                <option value="">Tipo de Estado</option>
+                                                <option *ngFor="let item of model.listErrorType"  [value] = "item.typeError">{{item.description}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -52,7 +46,9 @@
                                             <input type="text"
                                                  placeholder="Fecha Inicio"
                                                  class="form-control"
-                                                 bsDatepicker>
+                                                 [(ngModel)]="dataSearchTransaction.startDate"
+                                                 bsDatepicker
+                                                 #dp="bsDatepicker" [bsConfig]="bsConfig">
                                         </div>
                                     </div>
                                 </div>
@@ -66,13 +62,15 @@
                                             <input type="text"
                                                  placeholder="Fecha Fin"
                                                  class="form-control"
-                                                 bsDatepicker>
+                                                 [(ngModel)]="dataSearchTransaction.endDate"
+                                                 bsDatepicker [bsConfig]="bsConfig">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
+                                <div class="col-md-6 col-lg-4 col-xxl-2">
+                                    <label class="form-label">&nbsp;</label>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Buscar</button>
+                                        <button type="button" class="btn btn-primary" (click) = "findTransaction()">Buscar</button>
                                     </div>
                                 </div>
                             </div>
@@ -99,6 +97,7 @@
                                     </tr><!-- tb-tnx-item -->
                                 </thead>
                                 <tbody>
+                                    <div class="col-md-12" style="text-align: center;" *ngIf="model.listTransactionLog.length == 0">No existen transacciones con el filtro colocado</div>
                                     <tr class="tb-tnx-item" style="text-align: center;" *ngFor="let items of model.listTransactionLog">
                                         <td>
                                             {{items.identTransaction}}
@@ -107,7 +106,7 @@
                                             {{items.nameTransaction}}
                                         </td>
                                         <td>
-                                            {{items.estado}}
+                                            {{items.estado | stateTransactionLog}}
                                         </td>
                                         <td>
                                             {{items.fechaTransaccion}}
@@ -121,10 +120,13 @@
                                 </tbody>
                             </table>
                             <div class="row" >
-                                <div class="col-xs-12 col-12" >
-                                    <pagination [boundaryLinks]="true" [totalItems]="model.listTransactionLog.length" (pageChanged)="pageChanged($event)" [itemsPerPage]="1"
+                                <div class="col-xs-12 col-12" *ngIf="model.listTransactionLog.length > 0">
+                                    <pagination [boundaryLinks]="true" [totalItems]="this.model.pages" (pageChanged)="pageChanged($event)" [itemsPerPage]="1"
                                         previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">                           
                                     </pagination>
+                                </div>
+
+                                <div class="col-xs-12 col-12" *ngIf="model.listTransactionLog.length == 0">
                                 </div>
                             </div>
                             
@@ -135,3 +137,8 @@
         </div>
     </div>
 </div>
+<ngx-loading [show]="loading" [config]="{
+    animationType: ngxLoadingAnimationTypes.circleSwish,
+    primaryColour: primaryColour,
+    backdropBorderRadius: '3px'
+  }"></ngx-loading>

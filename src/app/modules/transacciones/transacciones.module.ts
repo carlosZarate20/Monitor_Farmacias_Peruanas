@@ -8,6 +8,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TransactionLogService } from "../services/transactionLog.service";
+import { stateTransactionLogPipe } from "../pipes/stateTransactionLog.pipe";
+import { NgxLoadingModule } from "ngx-loading";
 
 const routes: Routes = [
     { path: '', component: TransaccionesComponent},
@@ -16,6 +18,7 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         TransaccionesComponent,
+        stateTransactionLogPipe
     ],
     imports: [
         RouterModule.forChild(routes),
@@ -24,7 +27,8 @@ const routes: Routes = [
         CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        NgxLoadingModule.forRoot({})
     ],
     bootstrap: [TransaccionesComponent],
     exports: [TransaccionesComponent],

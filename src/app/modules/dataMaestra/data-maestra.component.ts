@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DataMaestraService } from '../services/dataMaestra.service';
 import swal from'sweetalert2';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ngxLoadingAnimationTypes } from 'ngx-loading';
 @Component({
     selector: 'app-data-maestra',
     templateUrl: './data-maestra.component.html',
@@ -18,6 +19,20 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     entityTask: any;
     public model: any = {};
     titularAlert: string = 'Hola';
+
+    public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+    public loading = false;
+    public primaryColour = '#ffffff';
+    public secondaryColour = '#ccc';
+    public coloursEnabled = false;
+    public loadingTemplate!: TemplateRef<any>;
+    public config = {
+        animationType: ngxLoadingAnimationTypes.none,
+        primaryColour: this.primaryColour,
+        secondaryColour: this.secondaryColour,
+        tertiaryColour: this.primaryColour,
+        backdropBorderRadius: '3px',
+    };
 
 
     constructor(private dataMaestraService: DataMaestraService,public modalService: BsModalService){
@@ -49,6 +64,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
         confirmButtonText: 'Aceptar'
       }).then((result) => {
         if (result.isConfirmed) {
+          this.loading = true;
           this.dataMaestraService.sendMasterProvider(codeTransaction).subscribe(
             (res: any) => {
               console.log(res.message);
@@ -59,6 +75,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
                   title: 'Oops...',
                   text: res.message,
                 })
+                this.loading = false;
               }
               else{
                 swal.fire(
@@ -66,6 +83,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
                   'Se ejecuto correctamente el envio del maestro.',
                   'success'
                 )
+                this.loading = false;
               } 
             }
           )

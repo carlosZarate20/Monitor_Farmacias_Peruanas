@@ -9,6 +9,7 @@ import { TimepickerModule}
 from 'ngx-bootstrap/timepicker';
 import { programStatePipe } from '../pipes/programState.pipe';
 import { cronTransformPipe } from '../pipes/cronTransform.pipe';
+import { NgxLoadingModule } from 'ngx-loading';
 
 const routes: Routes = [
     { path: '', component: DataMaestraComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
         CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
-        TimepickerModule.forRoot()
+        TimepickerModule.forRoot(),
+        NgxLoadingModule.forRoot({})
     ],
     bootstrap: [DataMaestraComponent],
     exports: [DataMaestraComponent],
