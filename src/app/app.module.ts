@@ -13,7 +13,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
