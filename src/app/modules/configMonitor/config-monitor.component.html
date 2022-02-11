@@ -17,14 +17,18 @@
               <div class="row gy-4">
                 <div class="col-md-12 col-lg-12 col-xxl-12">
                   <div class="form-group">
-                    <label class="form-label">Correo para notificaciones</label>
-                    <br />
                     <label class="form-label"
-                      >En caso de registrar múltiples emails se deben ingresar
-                      los correos separados con , . Por ejemplo:
-                      usuario1@gmail.com, usuario2@gmail.com
-                    </label>
-                    <div class="form-control-wrap">
+                      >Correos para notificaciones de errores de envío de datos
+                      maestros</label
+                    >
+                    <span
+                      style="cursor: pointer; margin-left: 15px"
+                      (click)="addElement()"
+                      class="nk-menu-icon"
+                    >
+                      <em class="icon ni ni-plus-round"></em>
+                    </span>
+                    <!-- <div class="form-control-wrap">
                       <textarea
                         rows="1"
                         type="text"
@@ -34,11 +38,42 @@
                       >
                       {{ configMonitor.email }}
                       </textarea>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
-
+              <div class="row gy-4">
+                <div
+                  *ngFor="let item of emails; let i = index"
+                  class="col-md-12 col-lg-3 col-xxl-3"
+                >
+                  <div class="form-group">
+                    <div class="form-control-wrap">
+                      <span
+                        class="form-icon form-icon-right passcode-switch lg"
+                        data-target="emailElement{i}"
+                        style="cursor: pointer"
+                        (click)="removeElement(i)"
+                      >
+                        <em
+                          class="passcode-icon icon-show icon ni ni-trash-alt"
+                        >
+                        </em>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        id="emailElement{i}"
+                        maxlength="70"
+                        placeholder="Ingrese un correo electrónico"
+                        (change)="onChangeEmail($event, i)"
+                        value="{{ item }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-2 col-xxl-2"></div>
+              </div>
               <div class="row gy-4" style="text-align: right">
                 <div class="col-lg-10"></div>
 

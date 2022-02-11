@@ -22,6 +22,7 @@ export class ConfigMonitorComponent implements OnInit {
   pages: any;
   contentArray = new Array(90).fill('');
   returnedArray?: string[];
+  emails = Array<string>();
   public configMonitor: ConfigMonitor = new ConfigMonitor();
 
   constructor(
@@ -43,6 +44,7 @@ export class ConfigMonitorComponent implements OnInit {
       const { email, idConfigMonitor } = res;
       console.log(res);
       this.configMonitor.email = email;
+      this.emails = email.split(',');
       this.configMonitor.id = idConfigMonitor;
     });
   }
@@ -51,12 +53,43 @@ export class ConfigMonitorComponent implements OnInit {
     this._location.back();
   }
 
+  addElement() {
+    this.emails?.push('');
+  }
+
+  removeElement(i: number) {
+    this.emails.splice(i, 1);
+  }
+
+  onChangeEmail(e: any, i: number) {
+    const val = e.target.value;
+    this.emails[i] = val;
+  }
+
+  emailIsValid = (email: string) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+  validateEmails = (array: Array<string>) => {
+    let valid = true;
+    array.forEach((el: string) => {
+      console.log('VALIDA', this.emailIsValid(el));
+      if (!this.emailIsValid(el)) {
+        valid = false;
+      }
+    });
+    return valid;
+  };
+
   saveConfig() {
-    if (this.configMonitor.email.trim() == '') {
+    const emailSended = this.emails.join(',');
+    if (emailSended.trim() == '') {
       this.swal.alertWarning(
         'Debe ingresar los correos para enviar las notificaciones de error'
       );
+    } else if (!this.validateEmails(this.emails)) {
+      this.swal.alertWarning('Debe ingresar correos válidos');
     } else {
+      this.configMonitor.email = emailSended;
       this.configMonitorService
         .saveConfig(this.configMonitor)
         .subscribe((res: any) => {
