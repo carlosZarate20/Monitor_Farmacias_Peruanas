@@ -7,7 +7,6 @@ import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { MainComponent } from './main.component';
 import { LoginService } from './services/login.service';
 
-
 const routes: Routes = [
   { path: '', component: MainComponent },
   {
@@ -37,6 +36,36 @@ const routes: Routes = [
     component: MainComponent,
     loadChildren: () =>
       import('./details/details.module').then((m) => m.DetailsModule),
+  },
+  {
+    path: 'usuarios',
+    component: MainComponent,
+    loadChildren: () =>
+      import('./userList/user-list.module').then((m) => m.UserListModule),
+  },
+  {
+    path: 'usuarios/registrar',
+    component: MainComponent,
+    loadChildren: () =>
+      import('./userRegister/user-register.module').then(
+        (m) => m.UserRegisterModule
+      ),
+  },
+  {
+    path: 'usuarios/actualizar/:id',
+    component: MainComponent,
+    loadChildren: () =>
+      import('./userUpdate/user-update.module').then(
+        (m) => m.UserRegisterModule
+      ),
+  },
+  {
+    path: 'configuracion',
+    component: MainComponent,
+    loadChildren: () =>
+      import('./configMonitor/config-monitor.module').then(
+        (m) => m.ConfigMonitorModule
+      ),
   },
   // {
   //     path: 'login',

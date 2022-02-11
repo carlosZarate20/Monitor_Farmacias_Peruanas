@@ -1,0 +1,173 @@
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block">
+          <div class="card card-bordered">
+            <div class="card-inner">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title color-primary-text">
+                      Lista de Usuarios
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row gy-4">
+                <div class="col-md-6 col-lg-4 col-xxl-2">
+                  <div class="form-group">
+                    <label class="form-label">Perfil</label>
+                    <div class="form-control-wrap">
+                      <select
+                        class="form-control"
+                        [(ngModel)]="userFilter.profileId"
+                      >
+                        <option value="0">- Todos -</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Usuario</option>
+                        <!-- <option
+                          *ngFor="let item of model.listNameTransaction"
+                          [value]="item.type"
+                        >
+                          {{ item.description }}
+                        </option> -->
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!--col-->
+                <div class="col-md-6 col-lg-4 col-xxl-3">
+                  <div class="form-group">
+                    <label class="form-label">Nombre o Usuario</label>
+                    <div class="form-control-wrap">
+                      <input
+                        type="text"
+                        placeholder="Nombre o usuario"
+                        class="form-control"
+                        [(ngModel)]="userFilter.name"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-2 col-xxl-3">
+                  <label class="form-label">&nbsp;</label>
+                  <div class="form-group">
+                    <button
+                      (click)="getUsers()"
+                      type="button"
+                      class="btn btn-secondary"
+                    >
+                      Buscar
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-2 col-xxl-3"
+                  style="text-align: right"
+                >
+                  <label class="form-label">&nbsp;</label>
+                  <div class="form-group">
+                    <button
+                      (click)="registerUser()"
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Registrar Usuario
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block-head nk-block-head-sm"></div>
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr class="tb-tnx-head" style="text-align: center">
+                    <th style="text-align: center">Nombre</th>
+                    <th style="text-align: center">Usuario</th>
+
+                    <th style="text-align: center">Perfil</th>
+
+                    <th style="text-align: center">Estado</th>
+                    <th style="text-align: center">Acciones</th>
+                  </tr>
+                  <!-- tb-tnx-item -->
+                </thead>
+                <tbody>
+                  <div
+                    class="col-md-12"
+                    style="text-align: center"
+                    *ngIf="model.listUsers.length == 0"
+                  >
+                    No se encontraron usuario registrados
+                  </div>
+                  <tr
+                    class="tb-tnx-item"
+                    style="text-align: center"
+                    *ngFor="let user of model.listUsers"
+                  >
+                    <td>
+                      {{ user.name }}
+                    </td>
+                    <td>
+                      {{ user.username }}
+                    </td>
+                    <td>
+                      {{ user.profile }}
+                    </td>
+                    <td>
+                      {{ user.state == 0 ? "Activo" : "Inactivo" }}
+                    </td>
+                    <td>
+                      <div class="tb-tnx-total">
+                        <span
+                          style="cursor: pointer"
+                          (click)="goDetail(user.userId)"
+                          class="nk-menu-icon"
+                        >
+                          <em class="icon ni ni-pen2"></em>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div
+                  class="col-xs-12 col-12"
+                  *ngIf="model.listUsers.length > 0"
+                >
+                  <pagination
+                    [boundaryLinks]="true"
+                    [totalItems]="this.model.pages"
+                    (pageChanged)="pageChanged($event)"
+                    [itemsPerPage]="1"
+                    previousText="&lsaquo;"
+                    nextText="&rsaquo;"
+                    firstText="&laquo;"
+                    lastText="&raquo;"
+                  >
+                  </pagination>
+                </div>
+
+                <div
+                  class="col-xs-12 col-12"
+                  *ngIf="model.listUsers.length == 0"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{
+    animationType: ngxLoadingAnimationTypes.circleSwish,
+    primaryColour: primaryColour,
+    backdropBorderRadius: '3px'
+  }"
+></ngx-loading>

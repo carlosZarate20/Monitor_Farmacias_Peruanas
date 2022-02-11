@@ -65,21 +65,51 @@
                         <span class="nk-menu-text">Data Maestra</span>
                     </a> -->
               </li>
-              <li class="nk-menu-item">
-                <a routerLink="/" class="nk-menu-link">
-                  <span class="nk-menu-icon"
-                    ><em class="icon ni ni-setting-alt-fill"></em
-                  ></span>
-                  <span class="nk-menu-text">Configuración</span>
-                </a>
-              </li>
-              <li class="nk-menu-item">
-                <a routerLink="/" class="nk-menu-link">
+              <li
+                *ngFor="let menuItem of model.menu.usuarios.items"
+                [routerLinkActive]="['active']"
+                class="nk-menu-item"
+              >
+                <a
+                  *ngIf="menuItem.display"
+                  routerLink="{{ menuItem.url }}"
+                  class="nk-menu-link"
+                >
                   <span class="nk-menu-icon"
                     ><em class="icon ni ni-users-fill"></em
                   ></span>
-                  <span class="nk-menu-text">Usuarios</span>
+                  <span class="nk-menu-text">{{ menuItem.name }}</span>
                 </a>
+              </li>
+              <li
+                *ngFor="let menuItem of model.menu.config.items"
+                [routerLinkActive]="['active']"
+                class="nk-menu-item"
+              >
+                <a
+                  *ngIf="menuItem.display"
+                  routerLink="{{ menuItem.url }}"
+                  class="nk-menu-link"
+                >
+                  <span class="nk-menu-icon"
+                    ><em class="icon ni ni-setting-alt-fill"></em
+                  ></span>
+                  <span class="nk-menu-text">{{ menuItem.name }}</span>
+                </a>
+              </li>
+              <li>
+                <span
+                  (click)="logout()"
+                  style="
+                    position: absolute;
+                    bottom: 0;
+                    font-weight: 1000;
+                    margin-left: 32%;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                  "
+                  >Cerrar Sesión</span
+                >
               </li>
             </ul>
           </div>

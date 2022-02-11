@@ -16,7 +16,7 @@ export class LoginService {
     headers.append('Accept', '*/*');
     return this.http
       .post(
-        `${environment.apiUrl}/login`,
+        `${environment.apiUrl}/signIn`,
         {
           username,
           password,

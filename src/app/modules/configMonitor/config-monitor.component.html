@@ -1,0 +1,65 @@
+<div class="nk-content">
+  <div class="container-fluid">
+    <div class="nk-content-inner">
+      <div class="nk-content-body">
+        <div class="nk-block">
+          <div class="card card-bordered">
+            <div class="card-inner">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title color-primary-text">
+                      Configuración
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row gy-4">
+                <div class="col-md-12 col-lg-12 col-xxl-12">
+                  <div class="form-group">
+                    <label class="form-label">Correo para notificaciones</label>
+                    <br />
+                    <label class="form-label"
+                      >En caso de registrar múltiples emails se deben ingresar
+                      los correos separados con , . Por ejemplo:
+                      usuario1@gmail.com, usuario2@gmail.com
+                    </label>
+                    <div class="form-control-wrap">
+                      <textarea
+                        rows="1"
+                        type="text"
+                        placeholder="Nombre"
+                        class="form-control"
+                        [(ngModel)]="configMonitor.email"
+                      >
+                      {{ configMonitor.email }}
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row gy-4" style="text-align: right">
+                <div class="col-lg-10"></div>
+
+                <div class="col-lg-2" style="text-align: right">
+                  <label class="form-label">&nbsp;</label>
+                  <div class="form-group">
+                    <button
+                      (click)="saveConfig()"
+                      type="button"
+                      class="btn btn-primary"
+                    >
+                      Guardar Cambios
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block-head nk-block-head-sm"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
