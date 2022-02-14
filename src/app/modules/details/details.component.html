@@ -10,6 +10,10 @@
                 <table class="table table-bordered table-striped">
                   <tbody>
                     <tr>
+                      <th>Identificador</th>
+                      <td>{{ detailTransaction.id }}</td>
+                    </tr>
+                    <tr>
                       <th>Operación</th>
                       <td>{{ detailTransaction.nameTransaction }}</td>
                     </tr>
@@ -21,20 +25,47 @@
                       <th>Fecha</th>
                       <td>{{ detailTransaction.dateTransaction }}</td>
                     </tr>
+                    <tr *ngIf="detailTransaction.sessionNumber">
+                      <th>Número de Sesión PMM</th>
+                      <td>{{ detailTransaction.sessionNumber }}</td>
+                    </tr>
                     <tr>
                       <th>Datos de envio</th>
-                      <td><textarea class="form-control no-resize" id="review" name="review" rows="4" cols="50" disabled>{{ detailTransaction.request }}</textarea></td>
+                      <td>
+                        <textarea
+                          class="form-control no-resize"
+                          id="review"
+                          name="review"
+                          rows="4"
+                          cols="50"
+                          disabled
+                          >{{ detailTransaction.request }}</textarea
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <th>Datos de respuesta</th>
-                      <td><textarea class="form-control no-resize" id="review" name="review" rows="4" cols="50" disabled>{{ detailTransaction.response }}</textarea></td>
+                      <td>
+                        <textarea
+                          class="form-control no-resize"
+                          id="review"
+                          name="review"
+                          rows="4"
+                          cols="50"
+                          disabled
+                          >{{ detailTransaction.response }}</textarea
+                        >
+                      </td>
                     </tr>
 
                     <tr>
                       <th>Errores Encontrados</th>
                       <td>
-                        <div *ngIf="detailTransaction.transactionLogErrors.length == 0
-                          ">
+                        <div
+                          *ngIf="
+                            detailTransaction.transactionLogErrors.length == 0
+                          "
+                        >
                           -
                         </div>
                         <table
