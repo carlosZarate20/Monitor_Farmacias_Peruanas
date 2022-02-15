@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { JwtInterceptor } from '../helpers/jwt.interceptor';
 import { MainComponent } from './main.component';
 import { LoginService } from './services/login.service';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -84,12 +85,13 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: JwtInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
     LoginService,
+    UserService
   ],
   bootstrap: [MainComponent],
   exports: [MainComponent],

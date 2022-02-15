@@ -74,6 +74,21 @@ class SweetAlert {
     });
   };
 
+  public alertWarningAndRedirect = (message: string, redirect: any) => {
+    Swal.fire({
+      title: '¡Advertencia!',
+      icon: 'warning',
+      text: message,
+      confirmButtonColor: color,
+      // timer: 2000,
+      didOpen: () => {},
+    }).then((result) => {
+      if (result.isConfirmed) {
+        redirect();
+      }
+    });
+  };
+
   public alertQuestion = (redirect: any) => {
     Swal.fire({
       title: '¿Está seguro?',
@@ -91,7 +106,11 @@ class SweetAlert {
     });
   };
 
-  public alertQuestionComplete = (title: string, text: string, redirect: any) => {
+  public alertQuestionComplete = (
+    title: string,
+    text: string,
+    redirect: any
+  ) => {
     Swal.fire({
       title,
       text,
@@ -108,7 +127,11 @@ class SweetAlert {
     });
   };
 
-  public alertQuestionText = (question: string, text: string, redirect: any) => {
+  public alertQuestionText = (
+    question: string,
+    text: string,
+    redirect: any
+  ) => {
     Swal.fire({
       title: question,
       text,

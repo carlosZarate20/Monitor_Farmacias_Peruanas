@@ -29,7 +29,11 @@
                 [routerLinkActive]="['active']"
                 class="nk-menu-item"
               >
-                <a routerLink="{{ menuItem.url }}" class="nk-menu-link">
+                <a
+                  *ngIf="havePermission(menuItem.url)"
+                  routerLink="{{ menuItem.url }}"
+                  class="nk-menu-link"
+                >
                   <span class="nk-menu-icon"
                     ><em class="icon ni ni-dashboard-fill"></em
                   ></span>
@@ -41,7 +45,11 @@
                 [routerLinkActive]="['active']"
                 class="nk-menu-item"
               >
-                <a routerLink="{{ menuItem.url }}" class="nk-menu-link">
+                <a
+                  *ngIf="havePermission(menuItem.url)"
+                  routerLink="{{ menuItem.url }}"
+                  class="nk-menu-link"
+                >
                   <span class="nk-menu-icon"
                     ><em class="icon ni ni-tranx"></em
                   ></span>
@@ -53,7 +61,11 @@
                 [routerLinkActive]="['active']"
                 class="nk-menu-item"
               >
-                <a routerLink="{{ menuItem.url }}" class="nk-menu-link">
+                <a
+                  *ngIf="havePermission(menuItem.url)"
+                  routerLink="{{ menuItem.url }}"
+                  class="nk-menu-link"
+                >
                   <span class="nk-menu-icon"
                     ><em class="icon ni ni-table-view"></em
                   ></span>
@@ -71,7 +83,7 @@
                 class="nk-menu-item"
               >
                 <a
-                  *ngIf="menuItem.display"
+                  *ngIf="havePermission(menuItem.url)"
                   routerLink="{{ menuItem.url }}"
                   class="nk-menu-link"
                 >
@@ -87,7 +99,7 @@
                 class="nk-menu-item"
               >
                 <a
-                  *ngIf="menuItem.display"
+                  *ngIf="havePermission(menuItem.url)"
                   routerLink="{{ menuItem.url }}"
                   class="nk-menu-link"
                 >

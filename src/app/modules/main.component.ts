@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from './services/login.service';
 import SweetAlert from '../helpers/sweet.alert';
-
+import { UserService } from './services/user.service';
+import ProfilePermission from '../helpers/profilePermission';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -14,8 +15,14 @@ export class MainComponent implements OnInit {
   public username = '';
   public password = '';
   public swal = new SweetAlert();
+  public profilePermission = new ProfilePermission();
+  public userInfo: any = {};
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(
+    private loginService: LoginService,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.model.menu = {};
     this.model.menu.dataMaestra = { display: true, items: [] };
     this.model.menu.dashboard = { display: true, items: [] };
@@ -66,7 +73,32 @@ export class MainComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
-    console.log('LOGIN', this.isLogged);
+
+    this.userService.getProfileUser().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.userInfo = res;
+      },
+      (error: any) => {
+        console.log(error);
+        if (error.status == 403 && token) {
+          this.swal.alertWarningAndRedirect(
+            'Su tiempo de sesión terminó, vuelva a iniciar sesión',
+            () => {
+              localStorage.removeItem('TOKEN');
+              window.location.reload();
+            }
+          );
+        }
+      }
+    );
+  }
+
+  havePermission(module: string) {
+    return this.profilePermission.getPermission(
+      module,
+      this.userInfo.profileUser.name
+    );
   }
 
   login() {
