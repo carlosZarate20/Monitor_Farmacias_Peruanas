@@ -26,21 +26,6 @@ export class UserListComponent implements OnInit {
   locale = 'es';
   bsConfig?: Partial<BsDatepickerConfig>;
 
-  colorTheme = 'theme-red';
-  public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
-  public loading = false;
-  public primaryColour = '#ffffff';
-  public secondaryColour = '#ccc';
-  public coloursEnabled = false;
-  public loadingTemplate!: TemplateRef<any>;
-  public config = {
-    animationType: ngxLoadingAnimationTypes.none,
-    primaryColour: this.primaryColour,
-    secondaryColour: this.secondaryColour,
-    tertiaryColour: this.primaryColour,
-    backdropBorderRadius: '3px',
-  };
-
   constructor(
     private userService: UserService,
     private router: Router,

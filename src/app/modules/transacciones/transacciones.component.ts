@@ -27,19 +27,6 @@ export class TransaccionesComponent implements OnInit {
   bsConfig?: Partial<BsDatepickerConfig>;
 
   colorTheme = 'theme-red';
-  public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
-  public loading = false;
-  public primaryColour = '#ffffff';
-  public secondaryColour = '#ccc';
-  public coloursEnabled = false;
-  public loadingTemplate!: TemplateRef<any>;
-  public config = {
-    animationType: ngxLoadingAnimationTypes.none,
-    primaryColour: this.primaryColour,
-    secondaryColour: this.secondaryColour,
-    tertiaryColour: this.primaryColour,
-    backdropBorderRadius: '3px',
-  };
 
   constructor(
     private transactionLogService: TransactionLogService,
@@ -62,7 +49,7 @@ export class TransaccionesComponent implements OnInit {
     this.dataSearchTransaction.typeTransaction = '';
     this.dataSearchTransaction.state = '';
     this.dataSearchTransaction.page = 0;
-    this.dataSearchTransaction.rows = 5;
+    this.dataSearchTransaction.rows = 10;
     this.getListError();
     this.getNameTransaction();
     this.getFirstTransactionlog();
@@ -90,11 +77,18 @@ export class TransaccionesComponent implements OnInit {
     });
   }
   getFirstTransactionlog() {
+    swal.fire({
+      title: 'Cargando',
+      didOpen: () => {
+        swal.showLoading()
+      }
+    });
     this.transactionLogService
       .listTransactionLog(this.dataSearchTransaction)
       .subscribe((res: any) => {
         this.model.listTransactionLog = res.data;
         this.model.pages = res.pages;
+        swal.close();
       });
   }
 
@@ -106,23 +100,28 @@ export class TransaccionesComponent implements OnInit {
       swal.fire({
         icon: 'warning',
         title: 'Oops...',
-        text: 'La fecha fin no puede ser menor que la fecha inicio',
+        text: 'La fecha fin no puede ser menor que la fecha inicio.',
       });
     } else {
-      this.loading = true;
+      swal.fire({
+        title: 'Cargando',
+        didOpen: () => {
+          swal.showLoading()
+        }
+      });
 
       this.transactionLogService
         .listTransactionLog(this.dataSearchTransaction)
         .subscribe((res: any) => {
           this.model.listTransactionLog = res.data;
           this.model.pages = res.pages;
-          this.loading = false;
+          swal.close();
         });
     }
   }
   pageChanged(event: PageChangedEvent): void {
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
+    // const startItem = (event.page - 1) * event.itemsPerPage;
+    // const endItem = event.page * event.itemsPerPage;
     const page = (event.page - 1) * event.itemsPerPage;
     this.dataSearchTransaction.page = page;
     this.findTransaction();
