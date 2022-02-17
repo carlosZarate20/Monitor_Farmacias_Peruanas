@@ -20,21 +20,6 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
     public model: any = {};
     titularAlert: string = 'Hola';
 
-    public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
-    public loading = false;
-    public primaryColour = '#ffffff';
-    public secondaryColour = '#ccc';
-    public coloursEnabled = false;
-    public loadingTemplate!: TemplateRef<any>;
-    public config = {
-        animationType: ngxLoadingAnimationTypes.none,
-        primaryColour: this.primaryColour,
-        secondaryColour: this.secondaryColour,
-        tertiaryColour: this.primaryColour,
-        backdropBorderRadius: '3px',
-    };
-
-
     constructor(private dataMaestraService: DataMaestraService,public modalService: BsModalService){
       this.model.listDataMaestra = [];
     }
@@ -64,31 +49,37 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
         confirmButtonText: 'Aceptar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.loading = true;
+          swal.fire({
+            title: 'Cargando',
+            didOpen: () => {
+              swal.showLoading()
+            }
+          });
           this.dataMaestraService.sendMasterProvider(codeTransaction).subscribe(
             (res: any) => {
               console.log(res.message);
               this.getDataMaestra();
               if(!res.status){
+                swal.close();
                 swal.fire({
                   icon: 'warning',
-                  title: 'Oops...',
+                  title: '¡Advertencia!',
                   text: res.message,
                 })
-                this.loading = false;
+                
               }
               else{
+                swal.close();
                 swal.fire(
                   'Enviado!',
-                  'Se ejecuto correctamente el envio del maestro.',
+                  res.message,
                   'success'
                 )
-                this.loading = false;
+                
               } 
             }
           )
         } else {
-          console.log('cancelado');
         }
       })
       

@@ -99,7 +99,7 @@ export class TransaccionesComponent implements OnInit {
     ) {
       swal.fire({
         icon: 'warning',
-        title: 'Oops...',
+        title: '¡Advertencia!',
         text: 'La fecha fin no puede ser menor que la fecha inicio.',
       });
     } else {
