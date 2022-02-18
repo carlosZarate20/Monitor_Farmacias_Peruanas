@@ -41,11 +41,11 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
     sendProvider(codeTransaction: any){
       console.log(codeTransaction);
       swal.fire({
-        title: '¿Seguro que desea ejecutar la transacción?',
+        title: '¿Está seguro?',
+        text: 'Esta tarea enviara datos actualizados a la plataforma LI',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#f44336',
         confirmButtonText: 'Aceptar'
       }).then((result) => {
         if (result.isConfirmed) {
@@ -65,16 +65,18 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
                   icon: 'warning',
                   title: '¡Advertencia!',
                   text: res.message,
+                  confirmButtonColor: '#f44336'
                 })
                 
               }
               else{
                 swal.close();
-                swal.fire(
-                  'Enviado!',
-                  res.message,
-                  'success'
-                )
+                swal.fire({
+                  icon: 'success',
+                  title: 'Enviado!',
+                  text: res.message,
+                  confirmButtonColor: '#f44336'
+                })
                 
               } 
             }

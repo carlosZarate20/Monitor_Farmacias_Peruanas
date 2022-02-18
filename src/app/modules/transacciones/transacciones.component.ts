@@ -101,6 +101,7 @@ export class TransaccionesComponent implements OnInit {
         icon: 'warning',
         title: '¡Advertencia!',
         text: 'La fecha fin no puede ser menor que la fecha inicio.',
+        confirmButtonColor: '#f44336'
       });
     } else {
       swal.fire({
