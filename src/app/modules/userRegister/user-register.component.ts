@@ -102,7 +102,6 @@ export class UserRegisterComponent implements OnInit {
       this.userService.saveUser(this.userRegister).subscribe(
         (res: any) => {
           this.swal.cerrarAlert();
-          console.log(res);
           const { code, message } = res;
           if (code == 200) {
             this.swal.alertSuccess(message, () => {

@@ -29,7 +29,6 @@ class SweetAlert {
       showLoaderOnConfirm: true,
       confirmButtonColor: color,
       preConfirm: (login) => {
-        console.log(login);
         if (login.length == '') {
           Swal.showValidationMessage('Debe ingresar el código del pallet');
         }

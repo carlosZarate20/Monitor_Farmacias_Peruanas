@@ -24,7 +24,6 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
       this.model.listDataMaestra = [];
     }
     ngOnInit() {
-      console.log("obteniendo service");
       this.getDataMaestra();
     }
 
@@ -33,13 +32,11 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
         res => {
           this.model.listDataMaestra = res;
           
-          console.log(res);
         }
       );
     }
 
     sendProvider(codeTransaction: any){
-      console.log(codeTransaction);
       swal.fire({
         title: '¿Está seguro?',
         text: 'Esta tarea enviara datos actualizados a la plataforma LI',
@@ -57,7 +54,6 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
           });
           this.dataMaestraService.sendMasterProvider(codeTransaction).subscribe(
             (res: any) => {
-              console.log(res.message);
               this.getDataMaestra();
               if(!res.status){
                 swal.close();
@@ -117,7 +113,6 @@ import { ngxLoadingAnimationTypes } from 'ngx-loading';
     }
 
     check(){
-      console.log(this.timeProcces);
     }
 
     sendMasterProcess(){     

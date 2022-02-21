@@ -74,6 +74,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row gy-4">
+                                <div class="col-md-6 col-lg-6 col-xxl-10">
+                                    
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xxl-2">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-sm-4">Filas</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-control" [(ngModel)]="dataSearchTransaction.rows" (change) = "changeRow()">
+                                                <option *ngFor="let item of rows">{{item}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="nk-block-head nk-block-head-sm">
                             </div>
                             <table class="table table-bordered table-striped">

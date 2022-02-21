@@ -88,7 +88,6 @@ export class DashBoardComponent implements OnInit {
   getTransaction() {
     this.dashboardService.getTransaction().subscribe((res) => {
       this.model.listTransaction = res;
-      console.log(res);
     });
   }
 
@@ -96,7 +95,6 @@ export class DashBoardComponent implements OnInit {
     this.dashboardService
       .getTransactionsLastSixMonths()
       .subscribe((res: any) => {
-        console.log(res);
         const dataLabel = res.map((el: any) => el.month);
         const dataSet = res.map((el: any) => el.qty);
         this.polarAreaChartLabels = dataLabel;
@@ -113,7 +111,6 @@ export class DashBoardComponent implements OnInit {
   }
 
   detailTransaction(id: any) {
-    console.log(id);
     this.router.navigate(['/main/details', id]);
   }
 }

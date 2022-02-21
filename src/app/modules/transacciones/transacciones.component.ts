@@ -25,6 +25,7 @@ export class TransaccionesComponent implements OnInit {
     new DataSearchTransaction();
   locale = 'es';
   bsConfig?: Partial<BsDatepickerConfig>;
+  rows: any;
 
   colorTheme = 'theme-red';
 
@@ -40,6 +41,7 @@ export class TransaccionesComponent implements OnInit {
     this.bsLocaleService.use('es');
   }
   ngOnInit() {
+    this.rows = [5, 10, 15];
     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
     this.dataSearchTransaction.startDate = new Date();
     let dateEnd = new Date();
@@ -56,7 +58,6 @@ export class TransaccionesComponent implements OnInit {
   }
 
   detailTransaction(id: any) {
-    console.log(id);
     this.router.navigate(['/main/details', id]);
   }
 
@@ -66,7 +67,6 @@ export class TransaccionesComponent implements OnInit {
         this.model.listErrorType = res;
       },
       (error) => {
-        console.log(error);
       }
     );
   }
@@ -93,7 +93,6 @@ export class TransaccionesComponent implements OnInit {
   }
 
   findTransaction() {
-    console.log(this.dataSearchTransaction);
     if (
       this.dataSearchTransaction.endDate <= this.dataSearchTransaction.startDate
     ) {
@@ -116,6 +115,10 @@ export class TransaccionesComponent implements OnInit {
         .subscribe((res: any) => {
           this.model.listTransactionLog = res.data;
           this.model.pages = res.pages;
+          if(this.model.listTransactionLog.length< this.dataSearchTransaction.rows){
+            
+            this.dataSearchTransaction.page = 0;
+          }
           swal.close();
         });
     }
@@ -125,6 +128,10 @@ export class TransaccionesComponent implements OnInit {
     // const endItem = event.page * event.itemsPerPage;
     const page = (event.page - 1) * event.itemsPerPage;
     this.dataSearchTransaction.page = page;
+    this.findTransaction();
+  }
+
+  changeRow(){
     this.findTransaction();
   }
 }

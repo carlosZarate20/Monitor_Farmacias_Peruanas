@@ -42,7 +42,6 @@ export class ConfigMonitorComponent implements OnInit {
   getConfig() {
     this.configMonitorService.getConfig().subscribe((res: any) => {
       const { email, idConfigMonitor } = res;
-      console.log(res);
       this.configMonitor.email = email;
       this.emails = email.split(',');
       this.configMonitor.id = idConfigMonitor;
@@ -72,7 +71,6 @@ export class ConfigMonitorComponent implements OnInit {
   validateEmails = (array: Array<string>) => {
     let valid = true;
     array.forEach((el: string) => {
-      console.log('VALIDA', this.emailIsValid(el));
       if (!this.emailIsValid(el)) {
         valid = false;
       }

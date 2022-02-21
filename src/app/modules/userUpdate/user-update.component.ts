@@ -102,7 +102,6 @@ export class UserUpdateComponent implements OnInit {
       this.userService.updateUser(this.userUpdate).subscribe(
         (res: any) => {
           this.swal.cerrarAlert();
-          console.log(res);
           const { code, message } = res;
           if (code == 200) {
             this.swal.alertSuccess(message, () => {

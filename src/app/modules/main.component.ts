@@ -76,11 +76,9 @@ export class MainComponent implements OnInit {
 
     this.userService.getProfileUser().subscribe(
       (res: any) => {
-        console.log(res);
         this.userInfo = res;
       },
       (error: any) => {
-        console.log(error);
         if (error.status == 403 && token) {
           this.swal.alertWarningAndRedirect(
             'Su tiempo de sesión terminó, vuelva a iniciar sesión',
@@ -111,7 +109,6 @@ export class MainComponent implements OnInit {
       this.loginService.signIn(this.username, this.password).subscribe(
         (res: any) => {
           this.swal.cerrarAlert();
-          console.log(res);
           const { status, message, data } = res;
           if (status == 200) {
             this.swal.alertSuccess('Inicio de sesión exitoso', () => {
@@ -127,7 +124,6 @@ export class MainComponent implements OnInit {
           this.swal.alertError(error);
         }
       );
-      console.log(this.username, this.password);
     }
   }
   logout() {
